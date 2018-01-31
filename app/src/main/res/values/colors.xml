@@ -6,6 +6,7 @@
     <color name="colorDeArriba">#00FF8D</color>
     <color name="colorDeBarra">#00B65D</color>
     <color name="colorDeAbajo">#32876F</color>
-    <color name="colorDeLetra">#0046ff</color>
+    <color name="colorDeLetra">#ffffff</color>
+    <color name="colorDeLetra2">#0046ff</color>
 
 </resources>

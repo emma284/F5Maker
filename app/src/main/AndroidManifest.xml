@@ -33,7 +33,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".ActivityListaGrupos" />
-        <activity android:name=".CrearGrupo"></activity>
+        <activity android:name=".CrearGrupo" />
+        <activity android:name=".MisHorarios" />
+        <activity android:name=".ArmarPartido" />
+        <activity android:name=".SorteoEquipos"></activity>
     </application>
 
 </manifest>

@@ -11,40 +11,48 @@
         android:id="@+id/botonGrupos"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="@string/txtBotonGrupos"
         android:layout_above="@+id/botonHorarios"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="27dp" />
+        android:layout_marginBottom="27dp"
+        android:backgroundTint="@color/colorDeBarra"
+        android:text="@string/txtBotonGrupos"
+        android:textColor="@color/colorDeLetra" />
 
     <Button
         android:id="@+id/botonHorarios"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="@string/txtBotonHorarios"
-        tools:layout_editor_absoluteX="67dp"
-        tools:layout_editor_absoluteY="231dp"
+        android:layout_alignStart="@+id/botonGrupos"
         android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/botonGrupos" />
+        android:backgroundTint="@color/colorDeBarra"
+        android:text="@string/txtBotonHorarios"
+        android:textColor="@color/colorDeLetra"
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="231dp" />
 
     <Button
         android:id="@+id/botonArmarPartido"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="@string/txtBotonPartido"
-        tools:layout_editor_absoluteX="67dp"
-        tools:layout_editor_absoluteY="303dp"
-        android:layout_below="@+id/botonHorarios"
         android:layout_alignStart="@+id/botonHorarios"
-        android:layout_marginTop="15dp" />
+        android:layout_below="@+id/botonHorarios"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/colorDeBarra"
+        android:text="@string/txtBotonPartido"
+        android:textColor="@color/colorDeLetra"
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="303dp" />
 
     <Button
         android:id="@+id/botonSorteoEquipos"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="@string/txtBotonSorteoEquipos"
-        tools:layout_editor_absoluteX="67dp"
-        tools:layout_editor_absoluteY="374dp"
-        android:layout_below="@+id/botonArmarPartido"
         android:layout_alignStart="@+id/botonArmarPartido"
-        android:layout_marginTop="24dp" />
+        android:layout_below="@+id/botonArmarPartido"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/colorDeBarra"
+        android:text="@string/txtBotonSorteoEquipos"
+        android:textColor="@color/colorDeLetra"
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="374dp" />
 </RelativeLayout>

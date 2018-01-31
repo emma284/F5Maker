@@ -9,6 +9,9 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     private Button botonGrupos;
+    private Button botonHorarios;
+    private Button botonPartido;
+    private Button botonEquipos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,12 +20,39 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         botonGrupos = (Button) findViewById(R.id.botonGrupos);
-        //findViewById(R.id.botonGrupos).setOnClickListener((View.OnClickListener) this);
+        botonHorarios = (Button) findViewById(R.id.botonHorarios);
+        botonPartido = (Button)findViewById(R.id.botonArmarPartido);
+        botonEquipos = (Button)findViewById(R.id.botonSorteoEquipos);
+
         botonGrupos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent grupo = new Intent (getApplicationContext(),ActivityListaGrupos.class);
                 startActivity(grupo);
+            }
+        });
+
+        botonHorarios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent horarios = new Intent (getApplicationContext(),MisHorarios.class);
+                startActivity(horarios);
+            }
+        });
+
+        botonPartido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent partido = new Intent (getApplicationContext(),ArmarPartido.class);
+                startActivity(partido);
+            }
+        });
+
+        botonEquipos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent equipos = new Intent (getApplicationContext(),SorteoEquipos.class);
+                startActivity(equipos);
             }
         });
 

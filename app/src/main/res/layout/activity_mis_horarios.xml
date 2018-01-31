@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondovertical"
+    tools:context="grupoabpr.dam.isi.frsf.f5maker.MisHorarios">
+
+    <TextView
+        android:id="@+id/tituloMisHorarios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="106dp"
+        android:text="Mis Horarios"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@android:color/white" />
+
+    <GridView
+        android:layout_width="350dp"
+        android:layout_height="240dp"
+        android:layout_alignStart="@+id/tituloMisHorarios"
+        android:layout_below="@+id/tituloMisHorarios"
+        android:layout_marginTop="44dp"
+        android:columnWidth="50dp"
+        android:numColumns="auto_fit"/>
+
+    <Button
+        android:id="@+id/botonModificarHorarios"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/colorDeBarra"
+        android:text="Modificar"
+        android:textColor="@color/colorDeLetra" />
+
+</RelativeLayout>

@@ -1,10 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/F5mkrV"
+    android:background="@drawable/f5mkrv"
     tools:context="grupoabpr.dam.isi.frsf.f5maker.MainActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/botonGrupos"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/txtBotonGrupos"
+        android:layout_above="@+id/botonHorarios"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="27dp" />
+
+    <Button
+        android:id="@+id/botonHorarios"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/txtBotonHorarios"
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="231dp"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/botonGrupos" />
+
+    <Button
+        android:id="@+id/botonArmarPartido"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/txtBotonPartido"
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="303dp"
+        android:layout_below="@+id/botonHorarios"
+        android:layout_alignStart="@+id/botonHorarios"
+        android:layout_marginTop="15dp" />
+
+    <Button
+        android:id="@+id/botonSorteoEquipos"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/txtBotonSorteoEquipos"
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="374dp"
+        android:layout_below="@+id/botonArmarPartido"
+        android:layout_alignStart="@+id/botonArmarPartido"
+        android:layout_marginTop="24dp" />
+</RelativeLayout>

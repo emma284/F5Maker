@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">F5 Maker</string>
+    <string name="txtBotonGrupos">Mis Grupos</string>
+    <string name="txtBotonHorarios">Mis Horarios</string>
+    <string name="txtBotonPartido">Armar Partido</string>
+    <string name="txtBotonSorteoEquipos">Sortear Equipos</string>
 </resources>

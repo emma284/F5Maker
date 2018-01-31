@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "831062025833",
+    "firebase_url": "https://f5maker-19d08.firebaseio.com",
+    "project_id": "f5maker-19d08",
+    "storage_bucket": "f5maker-19d08.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:831062025833:android:b4c1ed25bbe12d6f",
+        "android_client_info": {
+          "package_name": "grupoabpr.dam.isi.frsf.f5maker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "831062025833-79ifk4es0po1kptoc3lh3s7c61pro7i8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzBKRQF35hIjjvE0Ru1rB0-6YVi-2EO4w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

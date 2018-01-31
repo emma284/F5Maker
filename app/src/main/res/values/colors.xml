@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorDeArriba">#00FF8D</color>
+    <color name="colorDeBarra">#00B65D</color>
+    <color name="colorDeAbajo">#32876F</color>
+    <color name="colorDeLetra">#0046ff</color>
+
 </resources>

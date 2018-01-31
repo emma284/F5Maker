@@ -2,6 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="grupoabpr.dam.isi.frsf.f5maker">
 
+    <service
+        android:name=".MyFirebaseMessagingService"
+        android:enabled="true"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="com.google.firebase.MESSAGING_EVENT" />
+        </intent-filter>
+    </service>
+    <service
+        android:name=".MyFirebaseInstanceIDService"
+        android:exported="false">
+        <intent-filter>
+            <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+        </intent-filter>
+    </service>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,7 +32,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityListaGrupos"></activity>
+        <activity android:name=".ActivityListaGrupos" />
+        <activity android:name=".CrearGrupo"></activity>
     </application>
 
 </manifest>

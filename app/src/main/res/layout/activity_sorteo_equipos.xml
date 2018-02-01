@@ -20,10 +20,4 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@android:color/white" />
 
-    <ImageSwitcher
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/tituloSorteoEquipos"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="143dp" />
 </RelativeLayout>

@@ -20,4 +20,62 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@android:color/white" />
 
+    <ImageView
+        android:id="@+id/imagenCancha1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        app:srcCompat="@drawable/cancha11" />
+
+    <TextView
+        android:id="@+id/nombreGrupo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imagenCancha1"
+        android:layout_alignStart="@+id/tituloSorteoEquipos"
+        android:layout_marginBottom="26dp"
+        android:text="Nombre Grupo"
+        android:layout_marginTop="26dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="@android:color/white"/>
+
+    <Button
+        android:id="@+id/botonAgregarJugador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/nombreGrupo"
+        android:layout_marginStart="13dp"
+        android:layout_toEndOf="@+id/tituloSorteoEquipos"
+        android:backgroundTint="@color/colorDeBarra"
+        android:text="Agregar Jugador" />
+
+    <Button
+        android:id="@+id/botonQuitarJugador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/botonAgregarJugador"
+        android:layout_below="@+id/imagenCancha1"
+        android:backgroundTint="@color/colorDeBarra"
+        android:text="Quitar Jugador" />
+
+    <Button
+        android:id="@+id/botonSortearEquiposYa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/botonQuitarJugador"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/colorDeBarra"
+        android:text="Sorteo Equipos" />
+
+    <ListView
+        android:id="@+id/listaParticipantes"
+        android:layout_width="30dp"
+        android:layout_height="110dp"
+        android:layout_alignEnd="@+id/nombreGrupo"
+        android:layout_alignStart="@+id/nombreGrupo"
+        android:layout_below="@+id/botonAgregarJugador"
+        android:background="@color/colorDeBarra" />
+
 </RelativeLayout>

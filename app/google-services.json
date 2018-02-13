@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "831062025833-sj8h06j7brboau814rdnek9152tjv55b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "grupoabpr.dam.isi.frsf.f5maker",
+            "certificate_hash": "2c940aa3d7929fbe2f894c4781a6348a3f3c2336"
+          }
+        },
+        {
+          "client_id": "831062025833-3h5qbrbjnim98d3rc0shifgms082mav3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "grupoabpr.dam.isi.frsf.f5maker",
+            "certificate_hash": "5f2f715e0aa5b5ce69c31afb746c81c503372c7f"
+          }
+        },
+        {
           "client_id": "831062025833-79ifk4es0po1kptoc3lh3s7c61pro7i8.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +45,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "831062025833-79ifk4es0po1kptoc3lh3s7c61pro7i8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

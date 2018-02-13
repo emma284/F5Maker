@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondovertical"
+    tools:context="grupoabpr.dam.isi.frsf.f5maker.ActividadPrincipal">
+
+    <Button
+        android:id="@+id/botonIniciarSesion"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="230dp"
+        android:backgroundTint="@color/colorDeBarra"
+        android:text="Iniciar Sesión"
+        android:textColor="@color/colorDeLetra" />
+
+    <Button
+        android:id="@+id/botonRegistrarse"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:layout_alignStart="@+id/botonIniciarSesion"
+        android:layout_below="@+id/botonIniciarSesion"
+        android:layout_marginTop="80dp"
+        android:backgroundTint="@color/colorDeBarra"
+        android:text="Registrarse"
+        android:textColor="@color/colorDeLetra" />
+</RelativeLayout>

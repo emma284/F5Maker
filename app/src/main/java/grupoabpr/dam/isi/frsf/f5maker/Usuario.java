@@ -5,4 +5,8 @@ public class Usuario {
     private String id;
     private String mail;
     private HorarioUsuario horario;
+
+    public Usuario(String mail) {
+        this.mail = mail;
+    }
 }

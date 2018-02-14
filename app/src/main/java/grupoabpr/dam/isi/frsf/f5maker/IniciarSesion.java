@@ -20,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Vector;
 
 //import com.google.firebase.auth.FirebaseAuth;
 
@@ -37,6 +38,10 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
     private int valorIntent;
     private Usuario currentUser;
     //private FirebaseAuth mAuth;
+
+    private Vector<Usuario> usuariosDeBase;
+    private Boolean bandera = false;
+
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
 
@@ -76,49 +81,19 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
             registrar.setVisibility(View.VISIBLE);
         }
 
-        final Boolean inicioValido;
 
-        //Agregar lógica de validación de datos para iniciar sesión
-        inicioValido = true;
-        final Boolean registroValido;
-        //Agregar lógica de validación de registro
-        registroValido = true;
+
 
         iniciar.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                if (inicioValido){
-                    DatabaseReference usuarioRef = database.getReference("Usuario");
-                    usuarioRef.addChildEventListener(new ChildEventListener() {
-                        @Override
-                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-                        }
-
-                        @Override
-                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                            String algo = dataSnapshot.getKey();
-                            Toast.makeText(getApplicationContext(),algo,Toast.LENGTH_SHORT).show();
-                        }
-
-                        @Override
-                        public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                        }
-
-                        @Override
-                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
+                Toast.makeText(getApplicationContext(),"antes del if",Toast.LENGTH_SHORT).show();
+                if (existeUsuario(email.getText().toString())==true){
+                   Toast.makeText(getApplicationContext(),"entro al if",Toast.LENGTH_SHORT).show();
                     Intent intentInicio = new Intent(getApplicationContext(),MainActivity.class);
                     startActivity(intentInicio);
-
+                    finish();
                 }
             }
         });
@@ -127,25 +102,52 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (registroValido) {
-
+                if (!existeUsuario(email.getText().toString())) {
                     String stringEmail = email.getText().toString();
                     String stringPassword = password.getText().toString();
 
-                    DatabaseReference usuarioRef = database.getReference("Usuario");//esto es la direccion de donde vas a guardar los usuarios, en tu caso seria usuarios
+                    DatabaseReference usuarioRef = database.getReference("Usuario");
+
+                    currentUser = new Usuario(stringEmail,stringPassword);
 
                     Map<String, Object> childUpdate = new HashMap<>();
 
 
-                    childUpdate.put(stringEmail,stringPassword);//aca vas a poner la clave que podrias poner el id del usuario te recomiendo que hagas esta funcion nombre.hashcode() te da un numero dependiendo el nombre y en
-//valor vas a poner el usuario q queres crear
-                    usuarioRef.updateChildren(childUpdate);//aca vas agregar el usaurio a la base
+                    childUpdate.put(currentUser.getId(),currentUser);
+                    usuarioRef.updateChildren(childUpdate);
 
                     Intent intentRegistro = new Intent(getApplicationContext(), ActividadPrincipal.class);
                     startActivity(intentRegistro);
+                    finish();
                 }
             }
         });
         }
 
+
+    Boolean existeUsuario(final String stringEmail){
+        bandera = false;
+        DatabaseReference usuarioRef = database.getReference("Usuario");
+
+
+        usuarioRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot s : dataSnapshot.getChildren()){
+                    Usuario usuario = s.getValue(Usuario.class);
+                    if(usuario.getMail().toString().equals(stringEmail) && !bandera){
+                        Toast.makeText(getApplicationContext(),"bandera es true",Toast.LENGTH_SHORT).show();
+                        bandera = true;
+                        //currentUser=usuario;
+                    }
+                }
+                Toast.makeText(getApplicationContext(),"salgo del data change",Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return bandera;
+    }
 }

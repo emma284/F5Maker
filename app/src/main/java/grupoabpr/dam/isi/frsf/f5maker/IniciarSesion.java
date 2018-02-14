@@ -10,8 +10,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -33,6 +37,9 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
     private int valorIntent;
     private Usuario currentUser;
     //private FirebaseAuth mAuth;
+
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,15 +84,41 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
         //Agregar lógica de validación de registro
         registroValido = true;
 
-
         iniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (inicioValido){
-                    //currentUser = new Usuario();
-                    Intent intentInicio = new Intent(getApplicationContext(), MainActivity.class);
-                // intentInicio.putExtra("usuarioActual", (Serializable) currentUser);
-                startActivity(intentInicio);
+                    DatabaseReference usuarioRef = database.getReference("Usuario");
+                    usuarioRef.addChildEventListener(new ChildEventListener() {
+                        @Override
+                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                        }
+
+                        @Override
+                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                            String algo = dataSnapshot.getKey();
+                            Toast.makeText(getApplicationContext(),algo,Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                        }
+
+                        @Override
+                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                    Intent intentInicio = new Intent(getApplicationContext(),MainActivity.class);
+                    startActivity(intentInicio);
+
                 }
             }
         });
@@ -95,13 +128,14 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
             @Override
             public void onClick(View view) {
                 if (registroValido) {
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+
                     String stringEmail = email.getText().toString();
                     String stringPassword = password.getText().toString();
 
                     DatabaseReference usuarioRef = database.getReference("Usuario");//esto es la direccion de donde vas a guardar los usuarios, en tu caso seria usuarios
 
                     Map<String, Object> childUpdate = new HashMap<>();
+
 
                     childUpdate.put(stringEmail,stringPassword);//aca vas a poner la clave que podrias poner el id del usuario te recomiendo que hagas esta funcion nombre.hashcode() te da un numero dependiendo el nombre y en
 //valor vas a poner el usuario q queres crear

@@ -20,7 +20,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Vector;
 
 //import com.google.firebase.auth.FirebaseAuth;
 
@@ -39,7 +38,7 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
     private Usuario currentUser;
     //private FirebaseAuth mAuth;
 
-    private Vector<Usuario> usuariosDeBase;
+
     private Boolean bandera = false;
 
 
@@ -70,13 +69,13 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
         valorIntent = intent.getExtras().getInt("login");
 
         if(valorIntent == 1){
-            Toast.makeText(getApplicationContext(),"Eligió iniciar",Toast.LENGTH_SHORT).show();
+
             inicio.setVisibility(View.VISIBLE);
             iniciar.setVisibility(View.VISIBLE);
 
         }
         else if(valorIntent == 2){
-            Toast.makeText(getApplicationContext(),"Eligió registrar",Toast.LENGTH_SHORT).show();
+
             registro.setVisibility(View.VISIBLE);
             registrar.setVisibility(View.VISIBLE);
         }
@@ -88,9 +87,9 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
 
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"antes del if",Toast.LENGTH_SHORT).show();
-                if (existeUsuario(email.getText().toString())==true){
-                   Toast.makeText(getApplicationContext(),"entro al if",Toast.LENGTH_SHORT).show();
+
+                if (1==1/*existeUsuario(email.getText().toString())*/) {
+
                     Intent intentInicio = new Intent(getApplicationContext(),MainActivity.class);
                     startActivity(intentInicio);
                     finish();
@@ -128,20 +127,17 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
     Boolean existeUsuario(final String stringEmail){
         bandera = false;
         DatabaseReference usuarioRef = database.getReference("Usuario");
-
-
         usuarioRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot s : dataSnapshot.getChildren()){
                     Usuario usuario = s.getValue(Usuario.class);
                     if(usuario.getMail().toString().equals(stringEmail) && !bandera){
-                        Toast.makeText(getApplicationContext(),"bandera es true",Toast.LENGTH_SHORT).show();
                         bandera = true;
                         //currentUser=usuario;
                     }
                 }
-                Toast.makeText(getApplicationContext(),"salgo del data change",Toast.LENGTH_SHORT).show();
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {

@@ -34,15 +34,15 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editText"
-        android:layout_below="@+id/editText"
+        android:layout_alignStart="@+id/editTextNombreGrupo"
+        android:layout_below="@+id/editTextNombreGrupo"
         android:layout_marginTop="26dp"
         android:text="Integrantes:"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textColor="@android:color/white" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editTextNombreGrupo"
         android:layout_width="356dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
@@ -57,13 +57,13 @@
         android:layout_alignStart="@+id/textView2"
         android:layout_below="@+id/textView2"
         android:layout_marginTop="14dp"
-        android:id="@+id/listView" />
+        android:id="@+id/listaIntegrantes" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonCrearGrupo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/listView"
+        android:layout_below="@+id/listaIntegrantes"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="25dp"
         android:backgroundTint="@color/colorDeBarra"

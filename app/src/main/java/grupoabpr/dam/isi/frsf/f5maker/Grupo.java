@@ -5,10 +5,10 @@ import java.util.Vector;
 
 public class Grupo {
     private String id;
-    private Usuario administrador;
+    //private Usuario administrador;
     private String nombre;
-    private HorarioGrupo horario;
-    private Vector<Usuario> integrantes;
+    //private HorarioGrupo horario;
+    //private Vector<Usuario> integrantes;
 
     public String getId() {
         return id;

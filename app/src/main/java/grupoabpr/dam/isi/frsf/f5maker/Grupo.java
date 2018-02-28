@@ -18,6 +18,14 @@ public class Grupo {
         this.id = id;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public Grupo(String nombre) {
         this.id = String.valueOf(nombre.hashCode());
         this.nombre = nombre;
@@ -27,5 +35,11 @@ public class Grupo {
 
     }
 
-
+    @Override
+    public String toString() {
+        return "Grupo{" +
+                "id='" + id + '\'' +
+                ", nombre='" + nombre + '\'' +
+                '}';
+    }
 }

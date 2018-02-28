@@ -20,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Vector;
 
 //import com.google.firebase.auth.FirebaseAuth;
 
@@ -41,6 +42,7 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
 
     private Boolean bandera = false;
 
+    private Vector<Usuario> usuarios;
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
 
@@ -49,7 +51,7 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iniciar_sesion);
-
+        //cargarUsuarios();
         inicio = (TextView)findViewById(R.id.tituloIniciarSesion);
         registro = (TextView)findViewById(R.id.tituloRegistrarse);
         iniciar = (Button)findViewById(R.id.botonIniciarSesion2);
@@ -88,13 +90,16 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
             @Override
             public void onClick(View view) {
 
-                if (1==1/*existeUsuario(email.getText().toString())*/) {
+                if (1==1){//encontrarUsuario(email.getText().toString())) {
 
                     Intent intentInicio = new Intent(getApplicationContext(),MainActivity.class);
+                    intentInicio.putExtra("usuario", currentUser);
                     startActivity(intentInicio);
                     finish();
                 }
             }
+
+
         });
 
 
@@ -116,6 +121,7 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
                     usuarioRef.updateChildren(childUpdate);
 
                     Intent intentRegistro = new Intent(getApplicationContext(), ActividadPrincipal.class);
+
                     startActivity(intentRegistro);
                     finish();
                 }
@@ -145,5 +151,37 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
             }
         });
         return bandera;
+    }
+
+
+    void cargarUsuarios(){
+        DatabaseReference usuarioRef = database.getReference("Usuario");
+        usuarioRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot s : dataSnapshot.getChildren()){
+                    Usuario usuario = s.getValue(Usuario.class);
+                    usuarios.add(usuario);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    Boolean encontrarUsuario(String mail) {
+        if(usuarios.isEmpty())
+            return false;
+        for(Usuario u : usuarios){
+            if(u.getMail().equals(mail)){
+                currentUser = u;
+                return true;
+            }
+        }
+        return false;
     }
 }

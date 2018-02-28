@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -22,7 +23,7 @@ public class CrearGrupo extends AppCompatActivity implements Serializable{
     private Button botonCrearGrupo;
     private ListView listaIntegrantes;
     private Usuario currentUser;
-    private String stringNombreGrupo;
+    //private String stringNombreGrupo;
     private Grupo grupoACrear;
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -33,20 +34,20 @@ public class CrearGrupo extends AppCompatActivity implements Serializable{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_grupo);
 
-        nombreGrupo = (EditText)findViewById(R.id.editTextNombreGrupo);
+        nombreGrupo = (EditText)findViewById(R.id.editTextNombreGrupoCrear);
         botonCrearGrupo = (Button)findViewById(R.id.buttonCrearGrupo);
         listaIntegrantes = (ListView)findViewById(R.id.listaIntegrantes);
-        stringNombreGrupo = nombreGrupo.getText().toString();
+
         grupoReference = database.getReference("Grupo");
 
         botonCrearGrupo.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
-
-
+                String stringNombreGrupo = nombreGrupo.getText().toString();
+                Toast.makeText(getApplicationContext(),stringNombreGrupo,Toast.LENGTH_SHORT).show();
                 grupoACrear = new Grupo(stringNombreGrupo);
-                Log.d("loquesea",stringNombreGrupo);
+
                 Map<String,Object> childUpdate = new HashMap<>();
 
                 childUpdate.put(grupoACrear.getId(),grupoACrear);

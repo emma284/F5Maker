@@ -1,7 +1,9 @@
 package grupoabpr.dam.isi.frsf.f5maker;
 
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable{
     private String id;
     private String mail;
     private String contrasenia;

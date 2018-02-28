@@ -1,10 +1,11 @@
 package grupoabpr.dam.isi.frsf.f5maker;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 
 
-public class HorarioGrupo {
+public class HorarioGrupo implements Serializable {
 
 
     Vector<Vector<Integer>> horario;

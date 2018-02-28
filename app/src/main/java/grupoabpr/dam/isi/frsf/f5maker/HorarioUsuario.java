@@ -1,10 +1,11 @@
 package grupoabpr.dam.isi.frsf.f5maker;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 
 
-public class HorarioUsuario {
+public class HorarioUsuario implements Serializable {
     Vector<Vector<Boolean>> horario;
 
     public HorarioUsuario() {

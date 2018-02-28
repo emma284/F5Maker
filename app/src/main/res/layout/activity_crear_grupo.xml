@@ -34,15 +34,15 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editTextNombreGrupo"
-        android:layout_below="@+id/editTextNombreGrupo"
+        android:layout_alignStart="@id/editTextNombreGrupoCrear"
+        android:layout_below="@id/editTextNombreGrupoCrear"
         android:layout_marginTop="26dp"
         android:text="Integrantes:"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textColor="@android:color/white" />
 
     <EditText
-        android:id="@+id/editTextNombreGrupo"
+        android:id="@+id/editTextNombreGrupoCrear"
         android:layout_width="356dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
@@ -52,7 +52,7 @@
         android:inputType="textPersonName" />
 
     <ListView
-        android:layout_width="356dp"
+        android:layout_width="178dp"
         android:layout_height="120dp"
         android:layout_alignStart="@+id/textView2"
         android:layout_below="@+id/textView2"
@@ -63,11 +63,29 @@
         android:id="@+id/buttonCrearGrupo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/listaIntegrantes"
         android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="25dp"
         android:backgroundTint="@color/colorDeBarra"
         android:text="Guardar Grupo"
         android:textColor="@color/colorDeLetra" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/editTextNombreGrupoCrear"
+        android:layout_below="@+id/textView2"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/buttonAgregarUsuarioGrupo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/listaIntegrantes"
+        android:layout_alignEnd="@+id/editText"
+        android:backgroundTint="@color/colorDeBarra"
+        android:text="Añadir Usuario" />
 
 </RelativeLayout>

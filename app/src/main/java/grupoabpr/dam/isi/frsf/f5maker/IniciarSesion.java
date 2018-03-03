@@ -42,7 +42,7 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
 
     private Boolean bandera = false;
 
-    private Vector<Usuario> usuarios;
+    private Vector<Usuario> usuarios = new Vector<>();
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
 
@@ -51,7 +51,9 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iniciar_sesion);
-        //cargarUsuarios();
+
+
+
         inicio = (TextView)findViewById(R.id.tituloIniciarSesion);
         registro = (TextView)findViewById(R.id.tituloRegistrarse);
         iniciar = (Button)findViewById(R.id.botonIniciarSesion2);
@@ -75,6 +77,26 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
             inicio.setVisibility(View.VISIBLE);
             iniciar.setVisibility(View.VISIBLE);
 
+
+            DatabaseReference usuarioRef2 = database.getReference("Usuario");
+            usuarioRef2.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    usuarios.removeAll(usuarios);
+                    for(DataSnapshot s : dataSnapshot.getChildren()){
+                        Usuario usuario = s.getValue(Usuario.class);
+                        usuarios.add(usuario);
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+
         }
         else if(valorIntent == 2){
 
@@ -84,18 +106,23 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
 
 
 
+//        Cargar usuarios
 
         iniciar.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
 
-                if (1==1){//encontrarUsuario(email.getText().toString())) {
+                if (encontrarUsuario(email.getText().toString())) {
 
                     Intent intentInicio = new Intent(getApplicationContext(),MainActivity.class);
-                    intentInicio.putExtra("usuario", currentUser);
+                    intentInicio.putExtra("usuario", currentUser.getMail());
                     startActivity(intentInicio);
                     finish();
+                }
+                else{
+
+                    Toast.makeText(getApplicationContext(),"USUARIO NO ENCONTRADO",Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -107,27 +134,33 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
             @Override
             public void onClick(View view) {
                 if (!existeUsuario(email.getText().toString())) {
+
                     String stringEmail = email.getText().toString();
                     String stringPassword = password.getText().toString();
+                    if(!validarEmail(stringEmail)){
+                        Toast.makeText(getApplicationContext(),"Email no válido",Toast.LENGTH_SHORT);
+                    }
+                    else{
+                        DatabaseReference usuarioRef = database.getReference("Usuario");
 
-                    DatabaseReference usuarioRef = database.getReference("Usuario");
 
-                    currentUser = new Usuario(stringEmail,stringPassword);
+                        currentUser = new Usuario(stringEmail,stringPassword);
 
-                    Map<String, Object> childUpdate = new HashMap<>();
+                        Map<String, Object> childUpdate = new HashMap<>();
 
 
-                    childUpdate.put(currentUser.getId(),currentUser);
-                    usuarioRef.updateChildren(childUpdate);
+                        childUpdate.put(currentUser.getId(),currentUser);
+                        usuarioRef.updateChildren(childUpdate);
 
-                    Intent intentRegistro = new Intent(getApplicationContext(), ActividadPrincipal.class);
+                        Intent intentRegistro = new Intent(getApplicationContext(), ActividadPrincipal.class);
 
-                    startActivity(intentRegistro);
-                    finish();
+                        startActivity(intentRegistro);
+                        finish();
+                    }
                 }
             }
         });
-        }
+    }
 
 
     Boolean existeUsuario(final String stringEmail){
@@ -178,10 +211,33 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
             return false;
         for(Usuario u : usuarios){
             if(u.getMail().equals(mail)){
-                currentUser = u;
+                currentUser = new Usuario(u.getMail(),u.getContrasenia());
                 return true;
             }
         }
+        return false;
+    }
+
+
+    private Boolean validarEmail(String s){
+        int arrobas=0;
+        Boolean punto=false;
+        if(s.charAt(0) == '@' || Character.isDigit(s.charAt(0)) || s.charAt(0) == '.' || s.isEmpty()){
+            return false;
+        }
+        else {
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) == '@') {
+                    arrobas++;
+                } else if (s.charAt(i) == '.' && arrobas > 0) {
+                    punto = true;
+                }
+            }
+        }
+        if(arrobas==1 && punto){
+            return true;
+        }
+
         return false;
     }
 }

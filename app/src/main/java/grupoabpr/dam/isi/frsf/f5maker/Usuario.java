@@ -2,16 +2,26 @@ package grupoabpr.dam.isi.frsf.f5maker;
 
 
 import java.io.Serializable;
+import java.util.Vector;
 
 public class Usuario implements Serializable{
     private String id;
     private String mail;
     private String contrasenia;
-   // private HorarioUsuario horario;
+//    private HorarioUsuario horario;
+    private Vector<Integer> h = new Vector<>();
 
 
     public String getId() {
-        return id;
+        return this.id;
+    }
+
+    public Vector<Integer> getH() {
+        return h;
+    }
+
+    public void setH(Vector<Integer> h) {
+        this.h = h;
     }
 
     public void setId(String id) {
@@ -33,7 +43,7 @@ public class Usuario implements Serializable{
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
-//
+
 //    public HorarioUsuario getHorario() {
 //        return horario;
 //    }
@@ -43,14 +53,15 @@ public class Usuario implements Serializable{
 //    }
 
 
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "id='" + id + '\'' +
-                ", mail='" + mail + '\'' +
-                ", contrasenia='" + contrasenia + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Usuario{" +
+//                "id='" + id + '\'' +
+//                ", mail='" + mail + '\'' +
+//                ", contrasenia='" + contrasenia + '\'' +
+//                ", horario=" + horario +
+//                '}';
+//    }
 
     public Usuario(){
 
@@ -60,5 +71,7 @@ public class Usuario implements Serializable{
         this.id = String.valueOf(mail.hashCode());
         this.mail = mail;
         this.contrasenia = contrasenia;
+
+        //this.horario = new HorarioUsuario(1);
     }
 }

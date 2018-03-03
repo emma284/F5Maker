@@ -9,14 +9,22 @@ public class HorarioUsuario implements Serializable {
     Vector<Vector<Boolean>> horario;
 
     public HorarioUsuario() {
-        Vector aux = new Vector<Boolean>(12);
-        for(int i=0;i<12;i++){
-            aux.insertElementAt(false,i);
+
+    }
+
+    public HorarioUsuario(int a) {
+        if (a == 1) {
+            Vector aux = new Vector<Boolean>();
+
+            //Vector matriz = new Vector<Vector<Boolean>>();
+
+            for(int i=0;i<7;i++){
+                aux.removeAll(aux);
+                for(int j=0;j<12;j++){
+                    aux.add(false);
+                }
+                this.horario.add(aux);
+            }
         }
-        Vector matriz = new Vector<Vector<Boolean>>();
-        for(int i=0;i<7;i++){
-            matriz.add(aux);
-        }
-        this.horario = matriz;
     }
 }

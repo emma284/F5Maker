@@ -20,8 +20,10 @@ android {
 }
 
 dependencies {
+
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.google.firebase:firebase-database:11.6.2'
+    implementation 'com.google.firebase:firebase-messaging:11.6.2'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -32,6 +34,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
 }
+
 
 
 apply plugin: 'com.google.gms.google-services'

@@ -8,7 +8,7 @@ public class Grupo implements Serializable{
     private String id;
     //private Usuario administrador;
     private String nombre;
-    //private HorarioGrupo horario;
+    private HorarioGrupo horario;
     //private Vector<Usuario> integrantes;
 
     public String getId() {
@@ -27,9 +27,18 @@ public class Grupo implements Serializable{
         this.nombre = nombre;
     }
 
+    public HorarioGrupo getHorario() {
+        return horario;
+    }
+
+    public void setHorario(HorarioGrupo horario) {
+        this.horario = horario;
+    }
+
     public Grupo(String nombre) {
         this.id = String.valueOf(nombre.hashCode());
         this.nombre = nombre;
+        this.horario = new HorarioGrupo();
     }
 
     public Grupo() {
@@ -41,6 +50,7 @@ public class Grupo implements Serializable{
         return "Grupo{" +
                 "id='" + id + '\'' +
                 ", nombre='" + nombre + '\'' +
+                ", horario=" + horario +
                 '}';
     }
 }

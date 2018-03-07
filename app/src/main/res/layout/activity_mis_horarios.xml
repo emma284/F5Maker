@@ -20,6 +20,7 @@
         android:textColor="@android:color/white" />
 
     <GridView
+        android:id="@+id/gridViewHorarioUsuario"
         android:layout_width="350dp"
         android:layout_height="240dp"
         android:layout_alignStart="@+id/tituloMisHorarios"

@@ -1,40 +1,51 @@
 package grupoabpr.dam.isi.frsf.f5maker;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Vector;
 
 
 
 public class HorarioGrupo implements Serializable {
 
-    Vector<Integer> d;
-    Vector<Integer> l;
-    Vector<Integer> m;
-    Vector<Integer> x;
-    Vector<Integer> j;
-    Vector<Integer> v;
-    Vector<Integer> s;
+    ArrayList<Integer> d;
+    ArrayList<Integer> l;
+    ArrayList<Integer> m;
+    ArrayList<Integer> x;
+    ArrayList<Integer> j;
+    ArrayList<Integer> v;
+    ArrayList<Integer> s;
 
     public HorarioGrupo() {
-        d.add(26);
-        l.add(26);
-        m.add(26);
-        x.add(26);
-        j.add(26);
-        v.add(26);
-        s.add(26);
+        d = new ArrayList<>();
+        
+        l = new ArrayList<>();
+        m = new ArrayList<>();
+        x = new ArrayList<>();
+        j = new ArrayList<>();
+        v = new ArrayList<>();
+        s = new ArrayList<>();
+        for(int i=0;i<13;i++) {
+            d.add(0);
+            l.add(0);
+            m.add(0);
+            x.add(0);
+            j.add(0);
+            v.add(0);
+            s.add(0);
+        }
     }
 
 
 
-//    Vector<Vector<Integer>> horario;
+//    ArrayList<ArrayList<Integer>> horario;
 //
 //    public HorarioGrupo() {
-//        Vector aux = new Vector<Integer>(12);
+//        Vector aux = new ArrayList<Integer>(12);
 //        for(int i=0;i<12;i++){
 //            aux.insertElementAt(0,i);
 //        }
-//        Vector matriz = new Vector<Vector<Integer>>();
+//        Vector matriz = new ArrayList<ArrayList<Integer>>();
 //        for(int i=0;i<7;i++){
 //            matriz.add(aux);
 //        }

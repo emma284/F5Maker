@@ -23,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
@@ -87,12 +88,15 @@ public class CrearGrupo extends AppCompatActivity implements Serializable{
                     Toast.makeText(getApplicationContext(),"Ingrese un nombre para su grupo",Toast.LENGTH_SHORT);
                 }
                 else{
-                    grupoACrear = new Grupo(stringNombreGrupo);
+                    HorarioGrupo horario = new HorarioGrupo();
+                    ArrayList<String> integrantes = new ArrayList<>();
+                    integrantes.addAll(mails);
+                    grupoACrear = new Grupo(stringNombreGrupo,mailDeUsuario,horario,integrantes);
 
                     Map<String, Object> childUpdate = new HashMap<>();
 
                     childUpdate.put(grupoACrear.getId(), grupoACrear);
-                    //grupoReference.push().setValue(grupoACrear);
+
                     grupoReference.updateChildren(childUpdate);
                 }
             }

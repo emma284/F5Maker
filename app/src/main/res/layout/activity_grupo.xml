@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondovertical"
+    tools:context="grupoabpr.dam.isi.frsf.f5maker.ActivityGrupo">
+
+    <TextView
+        android:id="@+id/tituloActivityGrupo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="106dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@android:color/white" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_below="@id/tituloActivityGrupo"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@id/tituloActivityGrupo"
+        android:id="@+id/listViewIntegrantesGrupo" />
+
+    <Button
+        android:id="@+id/buttonVerHorarios"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/listViewIntegrantesGrupo"
+        android:layout_marginEnd="114dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/colorDeBarra"
+        android:textColor="@color/colorDeLetra"
+        android:text="Ver Horario" />
+
+    <Button
+        android:id="@+id/buttonArmarPartidoGrupo"
+        android:layout_centerHorizontal="true"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/colorDeBarra"
+        android:textColor="@color/colorDeLetra"
+        android:layout_marginBottom="25dp"
+        android:text="Armar Partido" />
+
+
+</RelativeLayout>

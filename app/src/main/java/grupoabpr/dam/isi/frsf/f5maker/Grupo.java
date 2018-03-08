@@ -1,15 +1,41 @@
 package grupoabpr.dam.isi.frsf.f5maker;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 
 public class Grupo implements Serializable{
     private String id;
-    //private Usuario administrador;
+    private String administrador;
     private String nombre;
     private HorarioGrupo horario;
-    //private Vector<Usuario> integrantes;
+    private ArrayList<String> integrantes;
+
+    public ArrayList<String> getIntegrantes() {
+        return integrantes;
+    }
+
+    public void setIntegrantes(ArrayList<String> integrantes) {
+        this.integrantes = integrantes;
+    }
+
+    public String getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(String administrador) {
+        this.administrador = administrador;
+    }
+
+    public HorarioGrupo getHorario() {
+        return horario;
+    }
+
+    public void setHorario(HorarioGrupo horario) {
+        this.horario = horario;
+    }
 
     public String getId() {
         return id;
@@ -27,18 +53,15 @@ public class Grupo implements Serializable{
         this.nombre = nombre;
     }
 
-    public HorarioGrupo getHorario() {
-        return horario;
-    }
 
-    public void setHorario(HorarioGrupo horario) {
-        this.horario = horario;
-    }
 
-    public Grupo(String nombre) {
+    public Grupo(String nombre,String administrador,HorarioGrupo horario,ArrayList<String> integrantes) {
         this.id = String.valueOf(nombre.hashCode());
         this.nombre = nombre;
-        this.horario = new HorarioGrupo();
+        this.administrador = administrador;
+        this.horario = horario;
+        this.integrantes = new ArrayList<>();
+        this.integrantes.addAll(integrantes);
     }
 
     public Grupo() {
@@ -50,7 +73,6 @@ public class Grupo implements Serializable{
         return "Grupo{" +
                 "id='" + id + '\'' +
                 ", nombre='" + nombre + '\'' +
-                ", horario=" + horario +
                 '}';
     }
 }

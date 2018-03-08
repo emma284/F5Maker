@@ -9,26 +9,44 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:windowSoftInputMode="adjustResize"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".MainActivity" />
-        <activity android:name=".ActivityListaGrupos" />
-        <activity android:name=".MisHorarios" />
-        <activity android:name=".ArmarPartido" />
-        <activity android:name=".CrearGrupo" />
-        <activity android:name=".SorteoEquipos" />
-        <activity android:name=".ActividadPrincipal" >
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        android:windowSoftInputMode="stateVisible|adjustPan">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityListaGrupos"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MisHorarios"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ArmarPartido"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CrearGrupo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SorteoEquipos"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActividadPrincipal"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".IniciarSesion"></activity>
+        <activity
+            android:name=".IniciarSesion"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ActivityGrupo"></activity>
     </application>
 
 </manifest>

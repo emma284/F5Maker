@@ -113,7 +113,7 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
             @Override
             public void onClick(View view) {
 
-                if (encontrarUsuario(email.getText().toString())) {
+                if (encontrarUsuario(email.getText().toString()) && currentUser.getContrasenia().equals(password.getText().toString())) {
 
                     Intent intentInicio = new Intent(getApplicationContext(),MainActivity.class);
                     intentInicio.putExtra("usuario", currentUser.getMail());
@@ -143,8 +143,8 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
                     else{
                         DatabaseReference usuarioRef = database.getReference("Usuario");
 
-
-                        currentUser = new Usuario(stringEmail,stringPassword);
+                        HorarioUsuario horario = new HorarioUsuario();
+                        currentUser = new Usuario(stringEmail,stringPassword,horario);
 
                         Map<String, Object> childUpdate = new HashMap<>();
 
@@ -211,7 +211,7 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
             return false;
         for(Usuario u : usuarios){
             if(u.getMail().equals(mail)){
-                currentUser = new Usuario(u.getMail(),u.getContrasenia());
+                currentUser = new Usuario(u.getMail(),u.getContrasenia(),u.getHorario());
                 return true;
             }
         }

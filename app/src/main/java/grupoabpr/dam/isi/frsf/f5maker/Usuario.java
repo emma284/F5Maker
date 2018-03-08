@@ -8,20 +8,12 @@ public class Usuario implements Serializable{
     private String id;
     private String mail;
     private String contrasenia;
-//    private HorarioUsuario horario;
-    private Vector<Integer> h = new Vector<>();
+    private HorarioUsuario horario;
+
 
 
     public String getId() {
         return this.id;
-    }
-
-    public Vector<Integer> getH() {
-        return h;
-    }
-
-    public void setH(Vector<Integer> h) {
-        this.h = h;
     }
 
     public void setId(String id) {
@@ -44,13 +36,13 @@ public class Usuario implements Serializable{
         this.contrasenia = contrasenia;
     }
 
-//    public HorarioUsuario getHorario() {
-//        return horario;
-//    }
-//
-//    public void setHorario(HorarioUsuario horario) {
-//        this.horario = horario;
-//    }
+    public HorarioUsuario getHorario() {
+        return horario;
+    }
+
+    public void setHorario(HorarioUsuario horario) {
+        this.horario = horario;
+    }
 
 
 //    @Override
@@ -67,11 +59,10 @@ public class Usuario implements Serializable{
 
     }
 
-    public Usuario(String mail, String contrasenia) {
+    public Usuario(String mail, String contrasenia, HorarioUsuario horario) {
         this.id = String.valueOf(mail.hashCode());
         this.mail = mail;
         this.contrasenia = contrasenia;
-
-        //this.horario = new HorarioUsuario(1);
+        this.horario = new HorarioUsuario();
     }
 }

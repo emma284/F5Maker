@@ -1,30 +1,46 @@
 package grupoabpr.dam.isi.frsf.f5maker;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 
 
 public class HorarioUsuario implements Serializable {
-    Vector<Vector<Boolean>> horario;
+
+    ArrayList<Boolean> domingo;
+    ArrayList<Boolean> lunes;
+    ArrayList<Boolean> martes;
+    ArrayList<Boolean> miercoles;
+    ArrayList<Boolean> jueves;
+    ArrayList<Boolean> viernes;
+    ArrayList<Boolean> sabado;
 
     public HorarioUsuario() {
+        domingo=new ArrayList<>();
+        lunes=new ArrayList<>();
+        martes=new ArrayList<>();
+        miercoles=new ArrayList<>();
+        jueves=new ArrayList<>();
+        viernes=new ArrayList<>();
+        sabado=new ArrayList<>();
+        for(int i=0;i<13;i++) {
+            domingo.add(false);
 
-    }
+            lunes.add(false);
 
-    public HorarioUsuario(int a) {
-        if (a == 1) {
-            Vector aux = new Vector<Boolean>();
+            martes.add(false);
 
-            //Vector matriz = new Vector<Vector<Boolean>>();
+            miercoles.add(false);
 
-            for(int i=0;i<7;i++){
-                aux.removeAll(aux);
-                for(int j=0;j<12;j++){
-                    aux.add(false);
-                }
-                this.horario.add(aux);
-            }
+            jueves.add(false);
+
+            viernes.add(false);
+
+            sabado.add(false);
         }
+        
     }
+
 }

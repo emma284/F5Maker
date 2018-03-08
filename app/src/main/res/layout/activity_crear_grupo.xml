@@ -68,6 +68,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="25dp"
         android:backgroundTint="@color/colorDeBarra"
+        android:layout_below="@id/buttonAgregarUsuarioGrupo"
+        android:layout_marginTop="35dp"
         android:text="Guardar Grupo"
         android:textColor="@color/colorDeLetra" />
 
@@ -78,14 +80,16 @@
         android:layout_alignEnd="@+id/editTextNombreGrupoCrear"
         android:layout_below="@+id/textView2"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="textEmailAddress" />
 
     <Button
         android:id="@+id/buttonAgregarUsuarioGrupo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/listaIntegrantes"
-        android:layout_alignEnd="@+id/editTextIntegrante"
+        android:layout_below="@id/editTextIntegrante"
+        android:layout_alignBottom="@id/listaIntegrantes"
+        android:layout_alignEnd="@id/editTextIntegrante"
+        android:layout_marginTop="75dp"
         android:backgroundTint="@color/colorDeBarra"
         android:text="Añadir Usuario" />
 

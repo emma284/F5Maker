@@ -80,7 +80,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="25dp"
         android:backgroundTint="@color/colorDeBarra"
-        android:text="Jugar"
-        android:textColor="@color/colorDeLetra" />
+        android:textColor="@color/colorDeLetra"
+        android:text="Jugar"         />
 
 </RelativeLayout>

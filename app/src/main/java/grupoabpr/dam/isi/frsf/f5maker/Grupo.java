@@ -7,6 +7,8 @@ import java.util.Vector;
 
 
 public class Grupo implements Serializable{
+
+
     private String id;
     private String administrador;
     private String nombre;
@@ -72,7 +74,11 @@ public class Grupo implements Serializable{
     public String toString() {
         return "Grupo{" +
                 "id='" + id + '\'' +
+                ", administrador='" + administrador + '\'' +
                 ", nombre='" + nombre + '\'' +
+                ", horario=" + horario +
+                ", integrantes=" + integrantes +
                 '}';
     }
+
 }

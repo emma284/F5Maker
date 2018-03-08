@@ -1,7 +1,10 @@
 package grupoabpr.dam.isi.frsf.f5maker;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Parcelable;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -116,7 +119,7 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
                 if (encontrarUsuario(email.getText().toString()) && currentUser.getContrasenia().equals(password.getText().toString())) {
 
                     Intent intentInicio = new Intent(getApplicationContext(),MainActivity.class);
-                    intentInicio.putExtra("usuario", currentUser.getMail());
+                    intentInicio.putExtra("usuario", currentUser);
                     startActivity(intentInicio);
                     finish();
                 }
@@ -152,9 +155,29 @@ public class IniciarSesion extends AppCompatActivity implements Serializable{
                         childUpdate.put(currentUser.getId(),currentUser);
                         usuarioRef.updateChildren(childUpdate);
 
+                        //Enviar notificacion de registro efectivo
+                        NotificationCompat.Builder mBuilder;
+                        NotificationManager mNotifyMgr =(NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
+
+                        int icono = R.drawable.soccer;
+                        Intent i=new Intent(getApplicationContext(), IniciarSesion.class);
+                        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, i, 0);
+
+                        mBuilder =new NotificationCompat.Builder(getApplicationContext())
+                                .setContentIntent(pendingIntent)
+                                .setSmallIcon(icono)
+                                .setContentTitle("F5-Maker")
+                                .setContentText("El usuario "+ currentUser.getMail() +" se ha registrado con éxito")
+                                .setVibrate(new long[] {100, 250, 100, 500})
+                                .setAutoCancel(true);
+
+
+
+                        mNotifyMgr.notify(1, mBuilder.build());
                         Intent intentRegistro = new Intent(getApplicationContext(), ActividadPrincipal.class);
 
                         startActivity(intentRegistro);
+
                         finish();
                     }
                 }

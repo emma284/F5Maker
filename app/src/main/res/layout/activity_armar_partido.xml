@@ -73,7 +73,7 @@
         android:background="@color/colorDeBarra" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonJugar"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

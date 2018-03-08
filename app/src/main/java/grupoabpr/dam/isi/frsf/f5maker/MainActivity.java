@@ -30,16 +30,17 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         botonEquipos = (Button)findViewById(R.id.botonSorteoEquipos);
 
 
-        intent = getIntent();
-
-       mailDeUsuario = intent.getExtras().getString("usuario");
+        Bundle extras = getIntent().getExtras();
+        if(extras != null){
+            currentUser = (Usuario)extras.getSerializable("usuario");
+        }
 
 
         botonGrupos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent grupo = new Intent (getApplicationContext(),ActivityListaGrupos.class);
-                grupo.putExtra("usuario",mailDeUsuario);
+                grupo.putExtra("usuario",currentUser.getMail());
                 startActivity(grupo);
             }
         });
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             @Override
             public void onClick(View view) {
                 Intent horarios = new Intent (getApplicationContext(),MisHorarios.class);
-                horarios.putExtra("usuario",mailDeUsuario);
+                horarios.putExtra("usuario",currentUser.getMail());
                 startActivity(horarios);
             }
         });
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             @Override
             public void onClick(View view) {
                 Intent partido = new Intent (getApplicationContext(),ArmarPartido.class);
-                partido.putExtra("usuario",mailDeUsuario);
+                partido.putExtra("usuario",currentUser);
                 startActivity(partido);
             }
         });
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             @Override
             public void onClick(View view) {
                 Intent equipos = new Intent (getApplicationContext(),SorteoEquipos.class);
-                equipos.putExtra("usuario",mailDeUsuario);
+                equipos.putExtra("usuario",currentUser.getMail());
                 startActivity(equipos);
             }
         });

@@ -98,6 +98,29 @@ public class CrearGrupo extends AppCompatActivity implements Serializable{
                     childUpdate.put(grupoACrear.getId(), grupoACrear);
 
                     grupoReference.updateChildren(childUpdate);
+
+                    //Enviar notificacion de registro efectivo
+                    NotificationCompat.Builder mBuilder;
+                    NotificationManager mNotifyMgr =(NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
+
+                    int icono = R.drawable.soccer;
+                    Intent i=new Intent(getApplicationContext(), IniciarSesion.class);
+                    PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, i, 0);
+
+                    mBuilder =new NotificationCompat.Builder(getApplicationContext())
+                            .setContentIntent(pendingIntent)
+                            .setSmallIcon(icono)
+                            .setContentTitle("F5-Maker")
+                            .setContentText("El grupo "+ grupoACrear.getNombre() +" se ha creado con éxito")
+                            .setVibrate(new long[] {100, 250, 100, 500})
+                            .setAutoCancel(true);
+
+
+
+                    mNotifyMgr.notify(1, mBuilder.build());
+
+
+                    finish();
                 }
             }
         });

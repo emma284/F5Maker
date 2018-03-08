@@ -43,13 +43,13 @@ public class Adaptador2 extends ArrayAdapter<Fila2> {
         Fila2 fila = getItem(position);
 
         tvHora.setText(fila.getHora());
-        tvDom.setText(fila.getDomingo());
-        tvLun.setText(fila.getLunes());
-        tvMar.setText(fila.getMartes());
-        tvMie.setText(fila.getMiercoles());
-        tvJue.setText(fila.getJueves());
-        tvVie.setText(fila.getViernes());
-        tvSab.setText(fila.getSabado());
+        tvDom.setText(String.valueOf(fila.getDomingo()));
+        tvLun.setText(String.valueOf(fila.getLunes()));
+        tvMar.setText(String.valueOf(fila.getMartes()));
+        tvMie.setText(String.valueOf(fila.getMiercoles()));
+        tvJue.setText(String.valueOf(fila.getJueves()));
+        tvVie.setText(String.valueOf(fila.getViernes()));
+        tvSab.setText(String.valueOf(fila.getSabado()));
 
 
 

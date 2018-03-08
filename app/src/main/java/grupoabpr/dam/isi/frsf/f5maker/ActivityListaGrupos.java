@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,7 +29,8 @@ public class ActivityListaGrupos extends AppCompatActivity implements Serializab
     private String mailDeUsuario;
 
     private Vector<Grupo> grupos = new Vector<>();
-    private Vector<String> nombreGrupos = new Vector<>();
+    private ArrayList<String> nombreGrupos = new ArrayList<>();
+
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     @Override
@@ -38,18 +40,17 @@ public class ActivityListaGrupos extends AppCompatActivity implements Serializab
 
         lista = (ListView)findViewById(R.id.lista2);
 
-
         intent = getIntent();
         //tengo el mail del usuario que se loggeó:
         mailDeUsuario = intent.getExtras().getString("usuario");
 
 
 
-        DatabaseReference usuarioRef2 = database.getReference("Grupo");
-        usuarioRef2.addValueEventListener(new ValueEventListener() {
+        DatabaseReference grupoRef = database.getReference("Grupo");
+        grupoRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                grupos.removeAll(grupos);
+                grupos.clear();
                 for(DataSnapshot s : dataSnapshot.getChildren()){
                     Grupo grupo= s.getValue(Grupo.class);
                     grupos.add(grupo);
@@ -62,7 +63,8 @@ public class ActivityListaGrupos extends AppCompatActivity implements Serializab
 
             }
         });
-        nombreGrupos.clear();
+        nombreGrupos.removeAll(nombreGrupos);
+        Log.d("etiqueta",String.valueOf(grupos.size()));
         for(Grupo g : grupos){
 
             for(String s : g.getIntegrantes()){
@@ -72,9 +74,9 @@ public class ActivityListaGrupos extends AppCompatActivity implements Serializab
             }
         }
 
-       // String[] algo = {"grupo1","grupo2","grupo3","grupo5","grupo4","grupo7","grupo4","grupo7","grupo4","grupo7","grupo4","grupo7","grupo4","grupo7"};
+       String[] algo = {"grupo1","grupo2","grupo3","grupo5","grupo4","grupo7","grupo4","grupo7","grupo4","grupo7","grupo4","grupo7","grupo4","grupo7"};
 
-        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,nombreGrupos);
+        final ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,algo);
 
        // lista.setOnItemClickListener(this);
         //lista.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -90,6 +92,16 @@ public class ActivityListaGrupos extends AppCompatActivity implements Serializab
                 Intent intentCrearGrupo = new Intent (getApplicationContext(),CrearGrupo.class);
                 intentCrearGrupo.putExtra("usuario",mailDeUsuario);
                 startActivity(intentCrearGrupo);
+            }
+        });
+        lista.setClickable(true);
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String seleccion = new String(adaptador.getItem(i));
+                Intent intentGrupo = new Intent(getApplicationContext(),ActivityGrupo.class);
+                intentGrupo.putExtra("nombreGrupo",seleccion);
+                startActivity(intentGrupo);
             }
         });
 

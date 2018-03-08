@@ -3,6 +3,7 @@ package grupoabpr.dam.isi.frsf.f5maker;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.GridView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -58,7 +60,7 @@ public class MisHorarios extends AppCompatActivity {
         Fila f3 = new Fila("15:00",false,false,false,false,false,false,false);
         Fila f4 = new Fila("16:00",false,false,false,false,false,false,false);
         Fila f5 = new Fila("17:00",false,false,false,false,false,false,false);
-        Fila f6 = new Fila("18:00",false,false,false,false,false,false,false);
+        Fila f6 = new Fila("18:00",true,false,false,false,false,false,false);
         Fila f7 = new Fila("19:00",false,false,false,false,false,false,false);
         Fila f8 = new Fila("20:00",false,false,false,false,false,false,false);
         Fila f9 = new Fila("21:00",false,false,false,false,false,false,false);
@@ -100,37 +102,23 @@ public class MisHorarios extends AppCompatActivity {
                 ArrayList<Boolean> sab = new  ArrayList<Boolean>();
 
 
-                //int len = grilla.getCount();
-                //SparseBooleanArray checked = grilla.getCheckedItemPositions();
+                Fila f = (Fila) listaHorarios.getAdapter().getItem(0);
+                String s = f.getDomingo().toString();
+                Log.d("etiqueta",s);
                 /*
-                for (int i = 0; i < len; i++) {
-                    int mod = i%7;
+                for(int i=0;i<13;i++){
+                    Fila f = (Fila) listaHorarios.getAdapter().getItem(i);
+                    dom.add(f.getDomingo());
+                    lun.add(f.getLunes());
 
-                    switch (mod){
-                        case 0:
-                            dom.add(checked.get(i));
-                            break;
-                        case 1:
-                            lun.add(checked.get(i));
-                            break;
-                        case 2:
-                            mar.add(checked.get(i));
-                            break;
-                        case 3:
-                            mie.add(checked.get(i));
-                            break;
-                        case 4:
-                            jue.add(checked.get(i));
-                            break;
-                        case 5:
-                            vie.add(checked.get(i));
-                            break;
-                        case 6:
-                            sab.add(checked.get(i));
-                            break;
 
-                    }
-                }*/
+                }
+                */
+
+
+
+
+
             }
         });
 

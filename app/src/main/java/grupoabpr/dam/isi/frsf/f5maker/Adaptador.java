@@ -53,6 +53,7 @@ public class Adaptador extends ArrayAdapter<Fila> {
 
 
 
+
         return filaNueva;
     }
 

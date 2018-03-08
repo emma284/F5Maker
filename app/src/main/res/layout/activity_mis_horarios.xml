@@ -20,23 +20,37 @@
         android:textColor="@android:color/white" />
 
     <GridView
+        android:id="@+id/tituloDias"
         android:layout_width="350dp"
-        android:layout_height="240dp"
-        android:layout_alignStart="@+id/tituloMisHorarios"
+        android:layout_height="47dp"
         android:layout_below="@+id/tituloMisHorarios"
-        android:layout_marginTop="44dp"
-        android:columnWidth="50dp"
-        android:numColumns="auto_fit"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp"
+        android:numColumns="8"
+        android:background="@color/colorDeBarra"
+        android:gravity="center"/>
+
+
 
     <Button
         android:id="@+id/botonModificarHorarios"
-        android:layout_width="130dp"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:backgroundTint="@color/colorDeBarra"
-        android:text="Modificar"
+        android:text="Guardar cambios"
         android:textColor="@color/colorDeLetra" />
+
+    <ListView
+        android:id="@+id/listViewHorarios"
+        android:layout_height="240dp"
+        android:layout_width="350dp"
+        android:layout_alignStart="@+id/tituloDias"
+        android:layout_below="@+id/tituloDias"
+        />
+
+
 
 </RelativeLayout>
